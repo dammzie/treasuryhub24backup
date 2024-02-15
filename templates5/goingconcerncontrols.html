@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" class="light">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<meta http-equiv="X-UA-Compatible" content="ie=edge">
+		<title>Treasury Document Wizard - Login </title>
+
+		<!-- Core CSS -->
+		<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/style.css') }}">
+        
+            
+  
+    <link rel="stylesheet" href="https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css"> 
+        
+        
+    <!-- ==== STYLE.CSS ==== -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+	</head>
+	<body>
+        <header class="container header" style="background-color: transparent;">
+            <!-- ==== NAVBAR ==== -->
+            <nav class="nav">
+              <div class="logo">
+                <img src="https://upload.wikimedia.org/wikipedia/en/3/35/Pearson_logo.svg" style="width: 100px;"/>
+              </div>
+      
+              <div class="nav_menu" id="nav_menu">
+        
+                  <ul class="nav_menu_list">
+                    <li class="nav_menu_item">
+                    <i class="bx bx-home-alt" style="color: blue; font-size: 20px;"></i>
+                      <a href="{{ url_for('home') }}" class="nav_menu_link">Home</a>
+                    </li>
+                  </ul>
+                </div>
+      
+             
+            </nav>
+          </header>
+		<!-- App Start-->
+		<div id="root">
+			<!-- App Layout-->
+			<div class="app-layout-blank flex flex-auto flex-col h-[100vh]">
+				<main class="h-full">
+                    <div class="page-container relative h-full flex flex-auto flex-col">
+                        <div class="h-full">
+                            <div class="container mx-auto flex flex-col flex-auto items-center justify-center min-w-0 h-full">
+                                <div class="card min-w-[320px] md:min-w-[450px] card-shadow" role="presentation">
+                                    <div class="card-body md:p-10">
+                                        <div class="text-center">
+                                            <div class="logo">
+                                                <img class="mx-auto" src="{{ url_for('static', filename='img/logo/logo-light-streamline.png') }}" style="width:30px;;" alt="logo">
+                                            </div>
+                                        </div>
+                                        <div class="text-center">
+                                            <div class="mb-4">
+                                                <h3 class="mb-1">Welcome back!</h3>
+                                                <p>Please enter your credentials to LogIn into the Document Wizard!</p>
+                                            </div>
+                                            <div>
+                                                <form action="{{ url_for('goingconcern.goingconcerncontrolssignin') }}" method="post">
+                                                    <div class="form-container vertical">
+                                                        <div class="form-item vertical">
+                                                            <label class="form-label mb-2">User Name</label>
+                                                            <div>
+                                                                <input
+                                                                    class="input"
+                                                                    type="email"
+                                                                    name="username"
+                                                                    autocomplete="off"
+                                                                    placeholder="Please enter your email"
+                                                                    value=""
+                                                                    required
+                                                                >
+                                                            </div>
+                                                        </div>
+                                                        <div class="form-item vertical">
+                                                            <label class="form-label mb-2">Password</label>
+                                                            <div>
+                                                                <span class="input-wrapper">
+                                                                    <input
+                                                                        class="input pr-8"
+                                                                        type="password"
+                                                                        name="password"
+                                                                        autocomplete="off"
+                                                                        placeholder="Password"
+                                                                        value=""
+                                                                        required
+                                                                    >
+                                                                </span>
+                                                            </div>
+                                                        </div>
+                                                        <div class="flex justify-between mb-6">
+                                                                {% if messages %}
+                                                                {% for category, message in messages %}
+                                                                    <div class="alert {{ category }}" style="color: red;">{{ message }}</div>
+                                                                {% endfor %}
+                                                            {% endif %}
+
+                                                        </div>
+                                                        <button class="btn btn-solid w-full" type="submit">Sign In</button>
+                                                        <div class="mt-4 text-center">
+                                                            <span>Having Troubles ?</span>
+                                                            <a class="text-primary-600 hover:underline" href="mailto:feyisayo.oduniyi@pearson.com">Contact Admin</a>
+                                                        </div>
+                                                    </div>
+                                                </form>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </main>                
+			</div>
+		</div>
+
+
+        
+		<script src="{{ url_for('static', filename='js/vendors.min.js') }}"></script>
+
+		<!-- Core JS -->
+		<script src="{{ url_for('static', filename='js/app.min.js') }}"></script>
+
+	</body>
+
+</html>

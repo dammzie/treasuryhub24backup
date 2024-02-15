@@ -1,0 +1,776 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" class="light">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<meta http-equiv="X-UA-Compatible" content="ie=edge">
+		<title>Going Concern - Controls</title>
+
+		<!-- Core CSS -->
+		<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/style.css') }}">
+	</head>
+	<body>
+		<!-- App Start-->
+		<div id="root">
+            
+			<!-- App Layout-->
+			<div class="app-layout-blank flex flex-auto flex-col h-[100vh]">
+                <div class="h-full flex flex-auto flex-col justify-between">
+                    <main class="h-full">
+                        <div class="page-container relative h-full flex flex-auto flex-col">
+                            <div class="grid lg:grid-cols-3 h-full">
+                                <div class="bg-no-repeat bg-cover py-6 px-16 flex-col justify-between hidden lg:flex" style="background-image: url('{{ url_for('static', filename='img/others/auth-side-bg.jpg') }}');">
+   
+                                    <div>
+                                        <div class="mb-6 flex items-center gap-4">
+                                            <span class="avatar avatar-circle avatar-md border-2 border-white">
+                                                <span class="avatar avatar-circle bg-teal-500 dark:bg-teal-500" data-avatar-size="30"">
+                                                    <span class="avatar-string">{{ user_info.get('shortname', '') }}</span>
+                                                </span>
+                                            </span>
+                                            <div class="text-white">
+                                                <div class="font-semibold text-base">{{ user_info.get('first_name', '') }} {{ user_info.get('last_name', '') }}</div>
+                                                <span class="opacity-80">{{ user_info.get('role', '') }}</span>
+                                            </div>                                            
+                                        </div>
+                                        <div class="col-span-4">
+                                            <div class="max-w-[900px]">
+                                                <div class="mb-8 text-white">
+                                                    <div class="mb-4 font-semibold uppercase">Status</div>
+                                                    <ul class="timeline ">
+                                                        <li class="timeline-item">
+                                                            <div class="timeline-item-wrapper">
+                                                                <div class="timeline-item-media">
+                                                                    <div class="timeline-item-media-content">
+                                                                        <span class="avatar avatar-circle text-gray-700 bg-gray-200 dark:text-gray-100" style="width: 30px; height: 30px; min-width: 30px; line-height: 30px; font-size: 15px;">
+                                                                            <span class="avatar-icon avatar-icon-30">
+                                                                                <svg
+                                                                                    stroke="currentColor"
+                                                                                    fill="currentColor"
+                                                                                    stroke-width="0"
+                                                                                    viewBox="0 0 20 20"
+                                                                                    aria-hidden="true"
+                                                                                    height="1em"
+                                                                                    width="1em"
+                                                                                    xmlns="http://www.w3.org/2000/svg"
+                                                                                >
+                                                                                    <path fill-rule="evenodd" d="M4 4a2 2 0 012-2h4.586A2 2 0 0112 2.586L15.414 6A2 2 0 0116 7.414V16a2 2 0 01-2 2H6a2 2 0 01-2-2V4zm2 6a1 1 0 011-1h6a1 1 0 110 2H7a1 1 0 01-1-1zm1 3a1 1 0 100 2h6a1 1 0 100-2H7z" clip-rule="evenodd"></path>
+                                                                                </svg>
+                                                                            </span>
+                                                                        </span>
+                                                                    </div>
+                                                                    <div class="timeline-connect"></div>
+                                                                </div>
+                                                                <div class="timeline-item-content">
+                                                                    <div class="mt-1 ">
+                                                                        <div class="flex items-center">
+                                                                            <span class="ml-3 rtl:mr-3">STEP 1: Review Checklist</span>
+                                                                            <div class="tag mx-1">
+                                                                                <span class="tag-affix tag-prefix bg-green-500"></span>Completed
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </li>
+                                                        <li class="timeline-item">
+                                                            <div class="timeline-item-wrapper">
+                                                                <div class="timeline-item-media">
+                                                                    <div class="timeline-item-media-content">
+                                                                        <span class="avatar avatar-circle text-gray-700 bg-gray-200 dark:text-gray-100" style="width: 30px; height: 30px; min-width: 30px; line-height: 30px; font-size: 15px;">
+                                                                            <span class="avatar-icon avatar-icon-30">
+                                                                                <svg
+                                                                                    stroke="currentColor"
+                                                                                    fill="currentColor"
+                                                                                    stroke-width="0"
+                                                                                    viewBox="0 0 20 20"
+                                                                                    aria-hidden="true"
+                                                                                    height="1em"
+                                                                                    width="1em"
+                                                                                    xmlns="http://www.w3.org/2000/svg"
+                                                                                >
+                                                                                    <path fill-rule="evenodd" d="M4 4a2 2 0 012-2h4.586A2 2 0 0112 2.586L15.414 6A2 2 0 0116 7.414V16a2 2 0 01-2 2H6a2 2 0 01-2-2V4zm2 6a1 1 0 011-1h6a1 1 0 110 2H7a1 1 0 01-1-1zm1 3a1 1 0 100 2h6a1 1 0 100-2H7z" clip-rule="evenodd"></path>
+                                                                                </svg>
+                                                                            </span>
+                                                                        </span>
+                                                                    </div>
+                                                                    <div class="timeline-connect"></div>
+                                                                </div>
+                                                                <div class="timeline-item-content">
+                                                                    <div class="mt-1 ">
+                                                                        <div class="flex items-center">
+                                                                            <span class="ml-3 rtl:mr-3">STEP 2: Review Checklist (part2)</span>
+                                                                            <div class="tag mx-1">
+                                                                                <span class="tag-affix tag-prefix bg-green-500"></span>Completed
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </li>
+                                                        <li class="timeline-item">
+                                                            <div class="timeline-item-wrapper">
+                                                                <div class="timeline-item-media">
+                                                                    <div class="timeline-item-media-content">
+                                                                        <span class="avatar avatar-circle text-gray-700 bg-gray-200 dark:text-gray-100" style="width: 30px; height: 30px; min-width: 30px; line-height: 30px; font-size: 15px;">
+                                                                            <span class="avatar-icon avatar-icon-30">
+                                                                                <svg
+                                                                                    stroke="currentColor"
+                                                                                    fill="currentColor"
+                                                                                    stroke-width="0"
+                                                                                    viewBox="0 0 20 20"
+                                                                                    aria-hidden="true"
+                                                                                    height="1em"
+                                                                                    width="1em"
+                                                                                    xmlns="http://www.w3.org/2000/svg"
+                                                                                >
+                                                                                    <path fill-rule="evenodd" d="M4 4a2 2 0 012-2h4.586A2 2 0 0112 2.586L15.414 6A2 2 0 0116 7.414V16a2 2 0 01-2 2H6a2 2 0 01-2-2V4zm2 6a1 1 0 011-1h6a1 1 0 110 2H7a1 1 0 01-1-1zm1 3a1 1 0 100 2h6a1 1 0 100-2H7z" clip-rule="evenodd"></path>
+                                                                                </svg>
+                                                                            </span>
+                                                                        </span>
+                                                                    </div>
+                                                                    <div class="timeline-connect"></div>
+                                                                </div>
+                                                                <div class="timeline-item-content">
+                                                                    <div class="mt-1 ">
+                                                                        <div class="flex items-center">
+                                                                            <span class="ml-3 rtl:mr-3">STEP 3: Review Checklist (part3)</span>
+                                                                            <div class="tag mx-1">
+                                                                                <span class="tag-affix tag-prefix bg-green-500"></span>Completed
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </li>
+                                                        <li class="timeline-item">
+                                                            <div class="timeline-item-wrapper">
+                                                                <div class="timeline-item-media">
+                                                                    <div class="timeline-item-media-content">
+                                                                        <span class="avatar avatar-circle text-gray-700 bg-gray-200 dark:text-gray-100" style="width: 30px; height: 30px; min-width: 30px; line-height: 30px; font-size: 15px;">
+                                                                            <span class="avatar-icon avatar-icon-30">
+                                                                                <svg
+                                                                                    stroke="currentColor"
+                                                                                    fill="currentColor"
+                                                                                    stroke-width="0"
+                                                                                    viewBox="0 0 20 20"
+                                                                                    aria-hidden="true"
+                                                                                    height="1em"
+                                                                                    width="1em"
+                                                                                    xmlns="http://www.w3.org/2000/svg"
+                                                                                >
+                                                                                    <path fill-rule="evenodd" d="M4 4a2 2 0 012-2h4.586A2 2 0 0112 2.586L15.414 6A2 2 0 0116 7.414V16a2 2 0 01-2 2H6a2 2 0 01-2-2V4zm2 6a1 1 0 011-1h6a1 1 0 110 2H7a1 1 0 01-1-1zm1 3a1 1 0 100 2h6a1 1 0 100-2H7z" clip-rule="evenodd"></path>
+                                                                                </svg>
+                                                                            </span>
+                                                                        </span>
+                                                                    </div>
+                                                                    <div class="timeline-connect"></div>
+                                                                </div>
+                                                                <div class="timeline-item-content">
+                                                                    <div class="mt-1 ">
+                                                                        <div class="flex items-center">
+                                                                            <span class="ml-3 rtl:mr-3">STEP 4: Review Data Sources</span>
+                                                                            <div class="tag mx-1">
+                                                                                <span class="tag-affix tag-prefix bg-green-500"></span>Completed
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </li>
+                                                        <li class="timeline-item">
+                                                            <div class="timeline-item-wrapper">
+                                                                <div class="timeline-item-media">
+                                                                    <div class="timeline-item-media-content">
+                                                                        <span class="avatar avatar-circle text-gray-700 bg-gray-200 dark:text-gray-100" style="width: 30px; height: 30px; min-width: 30px; line-height: 30px; font-size: 15px;">
+                                                                            <span class="avatar-icon avatar-icon-30">
+                                                                                <svg
+                                                                                    stroke="currentColor"
+                                                                                    fill="currentColor"
+                                                                                    stroke-width="0"
+                                                                                    viewBox="0 0 20 20"
+                                                                                    aria-hidden="true"
+                                                                                    height="1em"
+                                                                                    width="1em"
+                                                                                    xmlns="http://www.w3.org/2000/svg"
+                                                                                >
+                                                                                    <path fill-rule="evenodd" d="M4 4a2 2 0 012-2h4.586A2 2 0 0112 2.586L15.414 6A2 2 0 0116 7.414V16a2 2 0 01-2 2H6a2 2 0 01-2-2V4zm2 6a1 1 0 011-1h6a1 1 0 110 2H7a1 1 0 01-1-1zm1 3a1 1 0 100 2h6a1 1 0 100-2H7z" clip-rule="evenodd"></path>
+                                                                                </svg>
+                                                                            </span>
+                                                                        </span>
+                                                                    </div>
+                                                                    <div class="timeline-connect"></div>
+                                                                </div>
+                                                                <div class="timeline-item-content">
+                                                                    <div class="mt-1 ">
+                                                                        <div class="flex items-center">
+                                                                            <span class="ml-3 rtl:mr-3">STEP 4: Review Data Sources</span>
+                                                                            <div class="tag mx-1">
+                                                                                <span class="tag-affix tag-prefix bg-green-500"></span>Completed
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </li>
+                                                        <li class="timeline-item">
+                                                            <div class="timeline-item-wrapper">
+                                                                <div class="timeline-item-media">
+                                                                    <div class="timeline-item-media-content">
+                                                                        <span class="avatar avatar-circle text-gray-700 bg-gray-200 dark:text-gray-100" style="width: 30px; height: 30px; min-width: 30px; line-height: 30px; font-size: 15px;">
+                                                                            <span class="avatar-icon avatar-icon-30">
+                                                                                <svg
+                                                                                    stroke="currentColor"
+                                                                                    fill="currentColor"
+                                                                                    stroke-width="0"
+                                                                                    viewBox="0 0 20 20"
+                                                                                    aria-hidden="true"
+                                                                                    height="1em"
+                                                                                    width="1em"
+                                                                                    xmlns="http://www.w3.org/2000/svg"
+                                                                                >
+                                                                                    <path fill-rule="evenodd" d="M4 4a2 2 0 012-2h4.586A2 2 0 0112 2.586L15.414 6A2 2 0 0116 7.414V16a2 2 0 01-2 2H6a2 2 0 01-2-2V4zm2 6a1 1 0 011-1h6a1 1 0 110 2H7a1 1 0 01-1-1zm1 3a1 1 0 100 2h6a1 1 0 100-2H7z" clip-rule="evenodd"></path>
+                                                                                </svg>
+                                                                            </span>
+                                                                        </span>
+                                                                    </div>
+                                                                    <div class="timeline-connect"></div>
+                                                                </div>
+                                                                <div class="timeline-item-content">
+                                                                    <div class="mt-1 ">
+                                                                        <div class="flex items-center">
+                                                                            <span class="ml-3 rtl:mr-3">STEP 5: Review Data Sources (part2)</span>
+                                                                            <div class="tag mx-1">
+                                                                                <span class="tag-affix tag-prefix bg-green-500"></span>Completed
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </li>
+                                                        <li class="timeline-item">
+                                                            <div class="timeline-item-wrapper">
+                                                                <div class="timeline-item-media">
+                                                                    <div class="timeline-item-media-content">
+                                                                        <span class="avatar avatar-circle text-gray-700 bg-gray-200 dark:text-gray-100" style="width: 30px; height: 30px; min-width: 30px; line-height: 30px; font-size: 15px;">
+                                                                            <span class="avatar-icon avatar-icon-30">
+                                                                                <svg
+                                                                                    stroke="currentColor"
+                                                                                    fill="currentColor"
+                                                                                    stroke-width="0"
+                                                                                    viewBox="0 0 20 20"
+                                                                                    aria-hidden="true"
+                                                                                    height="1em"
+                                                                                    width="1em"
+                                                                                    xmlns="http://www.w3.org/2000/svg"
+                                                                                >
+                                                                                    <path fill-rule="evenodd" d="M4 4a2 2 0 012-2h4.586A2 2 0 0112 2.586L15.414 6A2 2 0 0116 7.414V16a2 2 0 01-2 2H6a2 2 0 01-2-2V4zm2 6a1 1 0 011-1h6a1 1 0 110 2H7a1 1 0 01-1-1zm1 3a1 1 0 100 2h6a1 1 0 100-2H7z" clip-rule="evenodd"></path>
+                                                                                </svg>
+                                                                            </span>
+                                                                        </span>
+                                                                    </div>
+                                                                    <div class="timeline-connect"></div>
+                                                                </div>
+                                                                <div class="timeline-item-content">
+                                                                    <div class="mt-1 ">
+                                                                        <div class="flex items-center">
+                                                                            <span class="ml-3 rtl:mr-3">STEP 6: Final Review</span>
+                                                                            <div class="tag mx-1">
+                                                                                <span class="tag-affix tag-prefix bg-blue-500"></span>In- Progress
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </li>
+                                                        <li class="timeline-item timeline-item-last">
+                                                            <div class="flex flex-auto items-center gap-2">
+                                                                <div>
+                                                                    <span class="skeleton skeleton-circle animate-pulse w-[35px] h-[35px]"></span>
+                                                                </div>
+                                                                <div class="flex flex-col gap-4 w-full">
+                                                                    <span class="skeleton skeleton-block animate-pulse w-[60%] h-[10px]"></span>
+                                                                </div>
+                                                            </div>
+                                                        </li>
+                                                    </ul>
+                                                </div></div></div></div>
+                                </div>
+                                <div class="col-span-2 flex flex-col justify-center items-center bg-white dark:bg-gray-800">
+                                    <div class="xl:min-w-[450px] px-8">
+                                        
+                                        <div>
+                                            <div class="card-body">
+                                                <div class="card card-border">
+                                                    <div class="card-header card-header-border card-header-extra">
+                                                        <h4>Document Review</h4>
+                                                        <span>
+                                                            <span class="flex items-center">
+                                                                <span class="mr-1 font-semibold">Status:</span>
+                                                                <span class="text-emerald-500 text-xl">
+                                                                    <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 20 20" aria-hidden="true" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg">
+                                                                        <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
+                                                                    </svg>
+                                                                </span>
+                                                            </span>
+                                                        </span>
+                                                    </div>
+                                                    <div id="slider" class="card-body slider">
+                                                        <div class="slide" style="display: block;">
+                                                        <img class="mx-auto" src="{{ url_for('static', filename='img/logo/pearsonreport.png') }}" alt="logo" style="width: 200px;">
+                                                        <h5>Going Concern Review Checklist</h5>
+                                                        <br>
+                                                        <!--Q1-->                                                        
+                                                        {% if responses.Q1 == 'Yes' and responses.Q1commentYES %}
+                                                        <p><strong>Accuracy of prior year Financial figures, closing balances and opening balances for current year</strong><br>
+                                                            <a>Checked against prior year accounts/annual report. Key Review Points: Sales, Profit, Interest, Tax, Operating Cashflow, Restructuring, Non operational cashflows, Net Debt, Cash, Liquidity</a><br>
+                                                            <p><strong>YES</strong>  ({{ responses.Q1commentYES }})</p><br>
+                                                        {% elif responses.Q1 == 'No' and responses.Q1commentNO %}
+                                                        <p><strong>Accuracy of prior year Financial figures, closing balances and opening balances for current year</strong><br>
+                                                            <a>Checked against prior year accounts/annual report. Key Review Points: Sales, Profit, Interest, Tax, Operating Cashflow, Restructuring, Non operational cashflows, Net Debt, Cash, Liquidity</a><br>
+                                                            <p><strong>NO</strong> ({{ responses.Q1commentNO }})</p><br>
+                                                        {% else %}
+                                                        <p><strong>Accuracy of prior year Financial figures, closing balances and opening balances for current year</strong><br>
+                                                            <a>Checked against prior year accounts/annual report. Key Review Points: Sales, Profit, Interest, Tax, Operating Cashflow, Restructuring, Non operational cashflows, Net Debt, Cash, Liquidity</a><br>
+                                                            <p><strong>{{ responses.Q1}}</strong></p><br>
+                                                        </p><br>
+                                                        {% endif %}
+                                                        <!--Q2-->   
+                                                        {% if responses.Q2 == 'Yes' and responses.Q2commentYES %}
+                                                        <p><strong>Accuracy of current year Financial figures</strong><br>
+                                                            <a>Checked against current year draft financial reports (Prime reports, group 
+                                                                reports, others).
+                                                                Key Review Points: Sales, Profit, Interest, Tax, Operating Cashflow, 
+                                                                Restructuring, Non operational cashflows, Net Debt, Cash, Liquidity.</a><br>
+                                                            <p><strong>YES</strong>  ({{ responses.Q2commentYES }})</p><br>
+                                                        {% elif responses.Q2 == 'No' and responses.Q2commentNO %}
+                                                        <p><strong>Accuracy of current year Financial figures</strong><br>
+                                                            <a>Checked against current year draft financial reports (Prime reports, group 
+                                                                reports, others).
+                                                                Key Review Points: Sales, Profit, Interest, Tax, Operating Cashflow, 
+                                                                Restructuring, Non operational cashflows, Net Debt, Cash, Liquidity.</a><br>
+                                                            <p><strong>NO</strong> ({{ responses.Q2commentNO }})</p><br>
+                                                        {% else %}
+                                                        <p><strong>Accuracy of current year Financial figures</strong><br>
+                                                            <a>Checked against current year draft financial reports (Prime reports, group 
+                                                                reports, others).
+                                                                Key Review Points: Sales, Profit, Interest, Tax, Operating Cashflow, 
+                                                                Restructuring, Non operational cashflows, Net Debt, Cash, Liquidity.</a><br>
+                                                            <p><strong>{{ responses.Q2}}</strong></p><br>
+                                                        </p><br>
+                                                        {% endif %}
+                                                        <!--Q3-->   
+                                                        {% if responses.Q3 == 'Yes' and responses.Q3commentYES %}
+                                                        <p><strong>Accuracy of LRP Figures included for all relevant years</strong><br>
+                                                            <a>Checked against board approved current year LRP (Adjusted for FX) and master 
+                                                                LRP file prepared by treasury.
+                                                                Key Review Points: Sales, Profit, Interest, Tax, Operating Cashflow, 
+                                                                Restructuring, Non operational cashflows, Net Debt, Cash, Liquidity. </a><br>
+                                                            <p><strong>YES</strong>  ({{ responses.Q3commentYES }})</p><br>
+                                                        {% elif responses.Q3 == 'No' and responses.Q3commentNO %}
+                                                        <p><strong>Accuracy of LRP Figures included for all relevant years</strong><br>
+                                                            <a>Checked against board approved current year LRP (Adjusted for FX) and master 
+                                                                LRP file prepared by treasury.
+                                                                Key Review Points: Sales, Profit, Interest, Tax, Operating Cashflow, 
+                                                                Restructuring, Non operational cashflows, Net Debt, Cash, Liquidity. </a><br>
+                                                            <p><strong>NO</strong> ({{ responses.Q3commentNO }})</p><br>
+                                                        {% else %}
+                                                        <p><strong>Accuracy of LRP Figures included for all relevant years</strong><br>
+                                                            <a>Checked against board approved current year LRP (Adjusted for FX) and master 
+                                                                LRP file prepared by treasury.
+                                                                Key Review Points: Sales, Profit, Interest, Tax, Operating Cashflow, 
+                                                                Restructuring, Non operational cashflows, Net Debt, Cash, Liquidity. </a><br>
+                                                            <p><strong>{{ responses.Q3}}</strong></p><br>
+                                                        </p><br>
+                                                        {% endif %}
+                                                        <!--Q4-->   
+                                                        {% if responses.Q4 == 'Yes' and responses.Q4commentYES %}
+                                                        <p><strong>Data Sources Tab</strong><br>
+                                                            <a>Review data souces tab and ensure all are accurate, current and are 
+                                                                correctly linked through to all scenario's </a><br>
+                                                            <p><strong>YES</strong>  ({{ responses.Q4commentYES }})</p><br>
+                                                        {% elif responses.Q4 == 'No' and responses.Q4commentNO %}
+                                                        <p><strong>Data Sources Tab</strong><br>
+                                                            <a>Review data souces tab and ensure all are accurate, current and are 
+                                                                correctly linked through to all scenario's </a><br>
+                                                            <p><strong>NO</strong> ({{ responses.Q4commentNO }})</p><br>
+                                                        {% else %}
+                                                        <p><strong>Data Sources Tab</strong><br>
+                                                            <a>Review data souces tab and ensure all are accurate, current and are 
+                                                                correctly linked through to all scenario's </a><br>
+                                                            <p><strong>{{ responses.Q4}}</strong></p><br>
+                                                        </p><br>
+                                                        {% endif %}
+                                                    </div>
+                                                    <div class="slide">
+                                                        <!--Q5-->   
+                                                        {% if responses.Q5 == 'Yes' and responses.Q5commentYES %}
+                                                        <p><strong>Phasing of figures </strong><br>
+                                                            <a>Are assumptions/workings used for the phasing of all figures correct? 
+                                                                Sales, Profit, Interest, Tax, Operating Cashflow, Restructuring, Non 
+                                                                operational cashflows, Amort + Depreciation </a><br>
+                                                            <p><strong>YES</strong>  ({{ responses.Q5commentYES }})</p><br>
+                                                        {% elif responses.Q5 == 'No' and responses.Q5commentNO %}
+                                                        <p><strong>Phasing of figures </strong><br>
+                                                            <a>Are assumptions/workings used for the phasing of all figures correct? 
+                                                                Sales, Profit, Interest, Tax, Operating Cashflow, Restructuring, Non 
+                                                                operational cashflows, Amort + Depreciation </a><br>
+                                                            <p><strong>NO</strong> ({{ responses.Q5commentNO }})</p><br>
+                                                        {% else %}
+                                                        <p><strong>Phasing of figures </strong><br>
+                                                            <a>Are assumptions/workings used for the phasing of all figures correct? 
+                                                                Sales, Profit, Interest, Tax, Operating Cashflow, Restructuring, Non 
+                                                                operational cashflows, Amort + Depreciation </a><br>
+                                                            <p><strong>{{ responses.Q5}}</strong></p><br>
+                                                        </p><br>
+                                                        {% endif %}
+                                                        <!--Q6-->   
+                                                        {% if responses.Q6 == 'Yes' and responses.Q6commentYES %}
+                                                        <p><strong>Validation of links within sheets, between tabs and to external 
+                                                            documents.</strong><br>
+                                                            <a>Check that all internal/external links are accurate and are correct. Links 
+                                                                to other tabs are correct and make sense and are easy to follow. Links 
+                                                                to external documents are minimised and were appropriate tested for 
+                                                                accuracy.
+                                                                Sufficent backup/explanation provided for all links</a><br>
+                                                            <p><strong>YES</strong>  ({{ responses.Q6commentYES }})</p><br>
+                                                        {% elif responses.Q6 == 'No' and responses.Q6commentNO %}
+                                                        <p><strong>Validation of links within sheets, between tabs and to external 
+                                                            documents.</strong><br>
+                                                            <a>Check that all internal/external links are accurate and are correct. Links 
+                                                                to other tabs are correct and make sense and are easy to follow. Links 
+                                                                to external documents are minimised and were appropriate tested for 
+                                                                accuracy.
+                                                                Sufficent backup/explanation provided for all links </a><br>
+                                                            <p><strong>NO</strong> ({{ responses.Q6commentNO }})</p><br>
+                                                        {% else %}
+                                                        <p><strong>Validation of links within sheets, between tabs and to external 
+                                                            documents.</strong><br>
+                                                            <a>Check that all internal/external links are accurate and are correct. Links 
+                                                                to other tabs are correct and make sense and are easy to follow. Links 
+                                                                to external documents are minimised and were appropriate tested for 
+                                                                accuracy.
+                                                                Sufficent backup/explanation provided for all links </a><br>
+                                                            <p><strong>{{ responses.Q6}}</strong></p><br>
+                                                        </p><br>
+                                                        {% endif %}
+                                                        <!--Q7-->   
+                                                        {% if responses.Q7 == 'Yes' and responses.Q7commentYES %}
+                                                        <p><strong>Excel Formula's/Workings</strong><br>
+                                                            <a>Check general excel formulas on all tabs for accuracy. Do they make 
+                                                                sense, are they adding correctly, are all relevant data points being 
+                                                                included? Check for circular references. </a><br>
+                                                            <p><strong>YES</strong>  ({{ responses.Q7commentYES }})</p><br>
+                                                        {% elif responses.Q7 == 'No' and responses.Q7commentNO %}
+                                                        <p><strong>Excel Formula's/Workings</strong><br>
+                                                            <a>Check general excel formulas on all tabs for accuracy. Do they make 
+                                                                sense, are they adding correctly, are all relevant data points being 
+                                                                included? Check for circular references.  </a><br>
+                                                            <p><strong>NO</strong> ({{ responses.Q7commentNO }})</p><br>
+                                                        {% else %}
+                                                        <p><strong>Excel Formula's/Workings</strong><br>
+                                                            <a>Check general excel formulas on all tabs for accuracy. Do they make 
+                                                                sense, are they adding correctly, are all relevant data points being 
+                                                                included? Check for circular references.  </a><br>
+                                                            <p><strong>{{ responses.Q7}}</strong></p><br>
+                                                        </p><br>
+                                                        {% endif %}
+                                                        <!--Q8-->   
+                                                        {% if responses.Q8 == 'Yes' and responses.Q8commentYES %}
+                                                        <p><strong>Net Debt Calculations</strong><br>
+                                                            <a>Are net debt calculations/formula's accurate. Do they correctly 
+                                                                calculate net debt? Are cash movement inputs being calculated 
+                                                                correctly? Are opening balances correctly linked to prior periods?</a><br>
+                                                            <p><strong>YES</strong>  ({{ responses.Q8commentYES }})</p><br>
+                                                        {% elif responses.Q8 == 'No' and responses.Q8commentNO %}
+                                                        <p><strong>Net Debt Calculations</strong><br>
+                                                            <a>Are net debt calculations/formula's accurate. Do they correctly 
+                                                                calculate net debt? Are cash movement inputs being calculated 
+                                                                correctly? Are opening balances correctly linked to prior periods?</a><br>
+                                                            <p><strong>NO</strong> ({{ responses.Q8commentNO }})</p><br>
+                                                        {% else %}
+                                                        <p><strong>Net Debt Calculations</strong><br>
+                                                            <a>Are net debt calculations/formula's accurate. Do they correctly 
+                                                                calculate net debt? Are cash movement inputs being calculated 
+                                                                correctly? Are opening balances correctly linked to prior periods?  </a><br>
+                                                            <p><strong>{{ responses.Q8}}</strong></p><br>
+                                                        </p><br>
+                                                        {% endif %}
+                                                    </div>
+                                                    <div class="slide">
+                                                        <!--Q9-->   
+                                                        {% if responses.Q9 == 'Yes' and responses.Q9commentYES %}
+                                                        <p><strong>Liquidity Calculations</strong><br>
+                                                            <a>Are liquidty calculations/formula's accurate. Do they correctly calculate 
+                                                                liquidty? Are cash movement inputs being calculated correctly? Are 
+                                                                opening balances correctly linked to prior periods?Are RCF figures 
+                                                                accurate and correctly reflect the RCF capacity for each period?</a><br>
+                                                            <p><strong>YES</strong>  ({{ responses.Q9commentYES }})</p><br>
+                                                        {% elif responses.Q9 == 'No' and responses.Q9commentNO %}
+                                                        <p><strong>Liquidity Calculations</strong><br>
+                                                            <a>Are liquidty calculations/formula's accurate. Do they correctly calculate 
+                                                                liquidty? Are cash movement inputs being calculated correctly? Are 
+                                                                opening balances correctly linked to prior periods?Are RCF figures 
+                                                                accurate and correctly reflect the RCF capacity for each period?</a><br>
+                                                            <p><strong>NO</strong> ({{ responses.Q9commentNO }})</p><br>
+                                                        {% else %}
+                                                        <p><strong>Liquidity Calculations</strong><br>
+                                                            <a>Are liquidty calculations/formula's accurate. Do they correctly calculate 
+                                                                liquidty? Are cash movement inputs being calculated correctly? Are 
+                                                                opening balances correctly linked to prior periods?Are RCF figures 
+                                                                accurate and correctly reflect the RCF capacity for each period?  </a><br>
+                                                            <p><strong>{{ responses.Q9}}</strong></p><br>
+                                                        </p><br>
+                                                        {% endif %}
+                                                        <!--Q10-->   
+                                                        {% if responses.Q10 == 'Yes' and responses.Q10commentYES %}
+                                                        <p><strong>Covenant Calculations </strong><br>
+                                                            <a>Are all covenant inputs correct and being linked or calculated correctly? 
+                                                                Operating Profit, Amort + Depreciation, Net Debt, Leases, Interest. Are 
+                                                                all calculations/formula's accurate? EBITDA, EBITA, Net Cash for 
+                                                                Covenants, Net Debt/EBITDA Ratio, Covenant Interest, EBITDA 
+                                                                Headroom and EBITA Headroom for Int Cover.</a><br>
+                                                            <p><strong>YES</strong>  ({{ responses.Q10commentYES }})</p><br>
+                                                        {% elif responses.Q10 == 'No' and responses.Q10commentNO %}
+                                                        <p><strong>Covenant Calculations </strong><br>
+                                                            <a>Are all covenant inputs correct and being linked or calculated correctly? 
+                                                                Operating Profit, Amort + Depreciation, Net Debt, Leases, Interest. Are 
+                                                                all calculations/formula's accurate? EBITDA, EBITA, Net Cash for 
+                                                                Covenants, Net Debt/EBITDA Ratio, Covenant Interest, EBITDA 
+                                                                Headroom and EBITA Headroom for Int Cover.</a><br>
+                                                            <p><strong>NO</strong> ({{ responses.Q10commentNO }})</p><br>
+                                                        {% else %}
+                                                        <p><strong>Covenant Calculations </strong><br>
+                                                            <a>Are all covenant inputs correct and being linked or calculated correctly? 
+                                                                Operating Profit, Amort + Depreciation, Net Debt, Leases, Interest. Are 
+                                                                all calculations/formula's accurate? EBITDA, EBITA, Net Cash for 
+                                                                Covenants, Net Debt/EBITDA Ratio, Covenant Interest, EBITDA 
+                                                                Headroom and EBITA Headroom for Int Cover.  </a><br>
+                                                            <p><strong>{{ responses.Q10}}</strong></p><br>
+                                                        </p><br>
+                                                        {% endif %}
+                                                        <!--Q11-->   
+                                                        {% if responses.Q11 == 'Yes' and responses.Q11commentYES %}
+                                                        <p><strong>Risks  </strong><br>
+                                                            <a>Are risks correctly being linked to each downside scenario. Are risks 
+                                                                being accurately phased throughout each month/year on each 
+                                                                downside scenario. On the risk for EY tab, do the risks and associated 
+                                                                assumptions make sense and are they easy to follow? Has 
+                                                                backup/workings been provided for each risk and </a><br>
+                                                            <p><strong>YES</strong>  ({{ responses.Q11commentYES }})</p><br>
+                                                        {% elif responses.Q11 == 'No' and responses.Q11commentNO %}
+                                                        <p><strong>Risks  </strong><br>
+                                                            <a>Are risks correctly being linked to each downside scenario. Are risks 
+                                                                being accurately phased throughout each month/year on each 
+                                                                downside scenario. On the risk for EY tab, do the risks and associated 
+                                                                assumptions make sense and are they easy to follow? Has 
+                                                                backup/workings been provided for each risk and </a><br>
+                                                            <p><strong>NO</strong> ({{ responses.Q11commentNO }})</p><br>
+                                                        {% else %}
+                                                        <p><strong>Risks  </strong><br>
+                                                            <a>Are risks correctly being linked to each downside scenario. Are risks 
+                                                                being accurately phased throughout each month/year on each 
+                                                                downside scenario. On the risk for EY tab, do the risks and associated 
+                                                                assumptions make sense and are they easy to follow? Has 
+                                                                backup/workings been provided for each risk and </a><br>
+                                                            <p><strong>{{ responses.Q11}}</strong></p><br>
+                                                        </p><br>
+                                                        {% endif %}
+                                                          <!--Q12-->   
+                                                        {% if responses.Q12 == 'Yes' and responses.Q12commentYES %}
+                                                        <p><strong>Re-calculation of all key Metrics </strong><br>
+                                                            <a>Using excel or another financial model recalculate all the key 
+                                                                outputs/metrics for each scenario to ensure they are correct.</a><br>
+                                                            <p><strong>YES</strong>  ({{ responses.Q12commentYES }})</p><br>
+                                                        {% elif responses.Q12 == 'No' and responses.Q12commentNO %}
+                                                        <p><strong>Re-calculation of all key Metrics </strong><br>
+                                                            <a>Using excel or another financial model recalculate all the key 
+                                                                outputs/metrics for each scenario to ensure they are correct. </a><br>
+                                                            <p><strong>NO</strong> ({{ responses.Q12commentNO }})</p><br>
+                                                        {% else %}
+                                                        <p><strong>Re-calculation of all key Metrics </strong><br>
+                                                            <a>Using excel or another financial model recalculate all the key 
+                                                                outputs/metrics for each scenario to ensure they are correct.</a><br>
+                                                            <p><strong>{{ responses.Q12}}</strong></p><br>
+                                                        </p><br>
+                                                        {% endif %}
+                                                    </div>
+                                                    <div class="slide">
+                                                        <h5>Going Concern Data Source Checklist</h5>
+                                                        <br>
+                                                        <!--Q13-->    
+                                                        <p><strong>Long Range Plan figures (Original)</strong><br>
+                                                            <a>Board Pack Approved Oct/Nov current year</a><br>
+                                                            <p><strong>{{ responses.Q13}}</strong></p><br>
+                                                        </p><br>
+                                                        <!--Q14-->    
+                                                        <p><strong>Next year Sales/Profit Phasing </strong><br>
+                                                            <a>Sales/Profit and other phasing</a><br>
+                                                            <p><strong>{{ responses.Q14}}</strong></p><br>
+                                                        </p><br>
+                                                        <!--Q15-->    
+                                                        <p><strong>Interest Expense including phasing and lease 
+                                                            interest split</strong><br>
+                                                            <a>Interest Workings model (Which feeds into the LRP 
+                                                                Board pack)</a><br>
+                                                            <p><strong>{{ responses.Q15}}</strong></p><br>
+                                                        </p><br>
+                                                        <!--Q16-->    
+                                                        <p><strong>Interest Expense including phasing and lease 
+                                                            interest split</strong><br>
+                                                            <a>Phasing</a><br>
+                                                            <p><strong>{{ responses.Q16}}</strong></p><br>
+                                                        </p><br>
+                                                        <!--Q17-->    
+                                                        <p><strong>Tax ETR Rates </strong><br>
+                                                            <a>LRP Board pack (E-mail from tax team)</a><br>
+                                                            <p><strong>{{ responses.Q17}}</strong></p><br>
+                                                        </p><br>
+                                                        <!--Q18-->    
+                                                        <p><strong>Restructuring Costs  </strong><br>
+                                                            <a>Restructuring Workings</a><br>
+                                                            <p><strong>{{ responses.Q18}}</strong></p><br>
+                                                        </p><br>
+                                                        
+                                                    </div> 
+                                                    <div class="slide">
+                                                        <br>
+                                                        <!--Q19-->    
+                                                        <p><strong>5YP file</strong><br>
+                                                            <a>Prepared by Treasury and forms basis of LRP/Board 
+                                                                pack </a><br>
+                                                            <p><strong>{{ responses.Q19}}</strong></p><br>
+                                                        </p><br>
+                                                        <!--Q20-->    
+                                                        <p><strong>Opening Net Debt/Cash </strong><br>
+                                                            <a>Annual Report </a><br>
+                                                            <p><strong>{{ responses.Q20}}</strong></p><br>
+                                                        </p><br>
+                                                        <!--Q21-->    
+                                                        <p><strong>RCF Facility</strong><br>
+                                                            <a>Documents/Extracts/Workings back to GBP</a><br>
+                                                            <p><strong>{{ responses.Q21}}</strong></p><br>
+                                                        </p><br>
+                                                        <!--Q22-->    
+                                                        <p><strong>Amort + Depreciation</strong><br>
+                                                            <a>Actuals Updated from PRIME</a><br>
+                                                            <p><strong>{{ responses.Q22}}</strong></p><br>
+                                                        </p><br>
+                                                        <!--Q23-->    
+                                                        <p><strong>Covenants</strong><br>
+                                                            <a>RCF Document evidencing Covenants for:
+                                                                - Net Debt:EBITDA Thresholds (<4x)
+                                                                - INTEREST COVER Thresholds (>3x)</a><br>
+                                                            <p><strong>{{ responses.Q23}}</strong></p><br>
+                                                        </p><br>
+                                                        <!--Q24-->    
+                                                        <p><strong>Risk Data  </strong><br>
+                                                            <a>Going concern and viability divisional submissions </a><br>
+                                                            <p><strong>{{ responses.Q24}}</strong></p><br>
+                                                        </p><br>
+                                                        <!--Q25-->    
+                                                        <p><strong>M&A Forecast  </strong><br>
+                                                            <a>M&A Forecast</a><br>
+                                                            <p><strong>{{ responses.Q25}}</strong></p><br>
+                                                        </p><br>
+                                                        <!--Q26-->    
+                                                        <p><strong>Share Buy Back   </strong><br>
+                                                            <a>SBB Forecast </a><br>
+                                                            <p><strong>{{ responses.Q26}}</strong></p><br>
+                                                        </p><br>
+                                                        
+                                                    </div> 
+
+
+                                                    
+                                                    </div>
+                                                    <div class="card-footer card-footer-border">
+                                                        <div class="flex justify-center">
+                                                            <div class="pagination">
+                                                                <span class="pagination-pager pagination-pager-prev pagination-pager-disabled">
+                                                                    <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 20 20" aria-hidden="true" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg">
+                                                                        <path fill-rule="evenodd" d="M12.707 5.293a1 1 0 010 1.414L9.414 10l3.293 3.293a1 1 0 01-1.414 1.414l-4-4a1 1 0 010-1.414l4-4a1 1 0 011.414 0z" clip-rule="evenodd"></path>
+                                                                    </svg>
+                                                                </span>
+                                                                <ul>
+                                                                    <li class="pagination-pager" id="prev">Prev</li>
+                                                                    <li class="pagination-pager">
+                                                                        <svg stroke="currentColor" fill="none" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg">
+                                                                            <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"></path>
+                                                                        </svg>
+                                                                    </li>
+                                                                    <li class="pagination-pager active" id="next">Next</li>
+                                                                </ul>
+                                                                <span class="pagination-pager pagination-pager-next">
+                                                                    <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 20 20" aria-hidden="true" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg">
+                                                                        <path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd"></path>
+                                                                    </svg>
+                                                                </span>
+                                                            </div>
+                                                        </div>
+                                                        <div class="flex justify-end">
+                                                            <a href="{{ url_for('goingconcern.goingconcerncontrolsapp5') }}" class="btn btn-default btn-sm ltr:mr-2 rtl:ml-2">Cancel</a>
+                                                            <a href="{{ url_for('goingconcern.goingconcerncontrolsdownload_pdf') }}" onclick="downloadAndRedirect()" class="button bg-primary-600 hover:bg-primary-500 active:bg-primary-700 text-white radius-round h-9 px-3 py-2 text-sm">Download PDF</a>
+                                                        </div>
+                                                    </div>
+                                                    
+                                                    
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </main>
+                </div>                              
+			</div>
+		</div>
+        <script>
+            let currentSlide = 0;
+const slides = document.querySelectorAll('.slide');
+const totalSlides = slides.length;
+
+slides[currentSlide].style.display = 'block'; // Show the first slide
+
+document.getElementById('prev').addEventListener('click', function() {
+    navigate(-1); // Go to the previous slide
+});
+
+document.getElementById('next').addEventListener('click', function() {
+    navigate(1); // Go to the next slide
+});
+
+function navigate(direction) {
+    slides[currentSlide].style.display = 'none'; // Hide the current slide
+    currentSlide = (currentSlide + direction + totalSlides) % totalSlides; // Calculate the next slide index
+    slides[currentSlide].style.display = 'block'; // Show the next slide
+}
+
+        </script>
+        <script>
+            function downloadAndRedirect() {
+                // Start the download
+                var link = document.createElement('a');
+                link.href = '{{ url_for('goingconcern.goingconcerncontrolsdownload_pdf') }}';
+                link.download = 'download';
+                document.body.appendChild(link);
+                link.click();
+                document.body.removeChild(link);
+            
+                // Redirect after a short delay to allow the download to start
+                setTimeout(function() {
+                    window.location.href = '{{ url_for('goingconcern.goingconcerncontrolsapp7') }}';
+                }, 1000); // Adjust delay as needed
+            }
+            </script>
+
+		<!-- Core Vendors JS -->
+        
+		<script src="{{ url_for('static', filename='js/vendors.min.js') }}"></script>
+
+		<!-- Core JS -->
+		<script src="{{ url_for('static', filename='js/app.min.js') }}"></script>
+	</body>
+
+</html>

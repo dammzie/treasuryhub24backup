@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" class="light">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<meta http-equiv="X-UA-Compatible" content="ie=edge">
+		<title>Going Concern - Controls</title>
+
+		<!-- Core CSS -->
+		<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/style.css') }}">
+	</head>
+	<body>
+		<!-- App Start-->
+		<div id="root">
+            
+			<!-- App Layout-->
+			<div class="app-layout-blank flex flex-auto flex-col h-[100vh]">
+                <div class="h-full flex flex-auto flex-col justify-between">
+                    <main class="h-full">
+                        <div class="page-container relative h-full flex flex-auto flex-col">
+                            <div class="grid lg:grid-cols-3 h-full">
+                                <div class="bg-no-repeat bg-cover py-6 px-16 flex-col justify-between hidden lg:flex" style="background-image: url('{{ url_for('static', filename='img/others/auth-side-bg.jpg') }}');">
+   
+                                    <div>
+                                        <div class="mb-6 flex items-center gap-4">
+                                            <span class="avatar avatar-circle avatar-md border-2 border-white">
+                                                <span class="avatar avatar-circle bg-teal-500 dark:bg-teal-500" data-avatar-size="30"">
+                                                    <span class="avatar-string">{{ user_info.get('shortname', '') }}</span>
+                                                </span>
+                                            </span>
+                                            <div class="text-white">
+                                                <div class="font-semibold text-base">{{ user_info.get('first_name', '') }} {{ user_info.get('last_name', '') }}</div>
+                                                <span class="opacity-80">{{ user_info.get('role', '') }}</span>
+                                            </div>                                            
+                                        </div>
+                                        <div class="col-span-4">
+                                            <div class="max-w-[900px]">
+                                                <div class="mb-8 text-white">
+                                                    <div class="mb-4 font-semibold uppercase">Status</div>
+                                                    <ul class="timeline ">
+                                                        <li class="timeline-item">
+                                                            <div class="timeline-item-wrapper">
+                                                                <div class="timeline-item-media">
+                                                                    <div class="timeline-item-media-content">
+                                                                        <span class="avatar avatar-circle text-gray-700 bg-gray-200 dark:text-gray-100" style="width: 30px; height: 30px; min-width: 30px; line-height: 30px; font-size: 15px;">
+                                                                            <span class="avatar-icon avatar-icon-30">
+                                                                                <svg
+                                                                                    stroke="currentColor"
+                                                                                    fill="currentColor"
+                                                                                    stroke-width="0"
+                                                                                    viewBox="0 0 20 20"
+                                                                                    aria-hidden="true"
+                                                                                    height="1em"
+                                                                                    width="1em"
+                                                                                    xmlns="http://www.w3.org/2000/svg"
+                                                                                >
+                                                                                    <path fill-rule="evenodd" d="M4 4a2 2 0 012-2h4.586A2 2 0 0112 2.586L15.414 6A2 2 0 0116 7.414V16a2 2 0 01-2 2H6a2 2 0 01-2-2V4zm2 6a1 1 0 011-1h6a1 1 0 110 2H7a1 1 0 01-1-1zm1 3a1 1 0 100 2h6a1 1 0 100-2H7z" clip-rule="evenodd"></path>
+                                                                                </svg>
+                                                                            </span>
+                                                                        </span>
+                                                                    </div>
+                                                                    <div class="timeline-connect"></div>
+                                                                </div>
+                                                                <div class="timeline-item-content">
+                                                                    <div class="mt-1 ">
+                                                                        <div class="flex items-center">
+                                                                            <span class="ml-3 rtl:mr-3">STEP 1: Review Checklist</span>
+                                                                            <div class="tag mx-1">
+                                                                                <span class="tag-affix tag-prefix bg-green-500"></span>Completed
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </li>
+                                                        <li class="timeline-item">
+                                                            <div class="timeline-item-wrapper">
+                                                                <div class="timeline-item-media">
+                                                                    <div class="timeline-item-media-content">
+                                                                        <span class="avatar avatar-circle text-gray-700 bg-gray-200 dark:text-gray-100" style="width: 30px; height: 30px; min-width: 30px; line-height: 30px; font-size: 15px;">
+                                                                            <span class="avatar-icon avatar-icon-30">
+                                                                                <svg
+                                                                                    stroke="currentColor"
+                                                                                    fill="currentColor"
+                                                                                    stroke-width="0"
+                                                                                    viewBox="0 0 20 20"
+                                                                                    aria-hidden="true"
+                                                                                    height="1em"
+                                                                                    width="1em"
+                                                                                    xmlns="http://www.w3.org/2000/svg"
+                                                                                >
+                                                                                    <path fill-rule="evenodd" d="M4 4a2 2 0 012-2h4.586A2 2 0 0112 2.586L15.414 6A2 2 0 0116 7.414V16a2 2 0 01-2 2H6a2 2 0 01-2-2V4zm2 6a1 1 0 011-1h6a1 1 0 110 2H7a1 1 0 01-1-1zm1 3a1 1 0 100 2h6a1 1 0 100-2H7z" clip-rule="evenodd"></path>
+                                                                                </svg>
+                                                                            </span>
+                                                                        </span>
+                                                                    </div>
+                                                                    <div class="timeline-connect"></div>
+                                                                </div>
+                                                                <div class="timeline-item-content">
+                                                                    <div class="mt-1 ">
+                                                                        <div class="flex items-center">
+                                                                            <span class="ml-3 rtl:mr-3">STEP 2: Review Checklist (part2)</span>
+                                                                            <div class="tag mx-1">
+                                                                                <span class="tag-affix tag-prefix bg-blue-500"></span>In- Progress
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </li>
+                                                        <li class="timeline-item timeline-item-last">
+                                                            <div class="flex flex-auto items-center gap-2">
+                                                                <div>
+                                                                    <span class="skeleton skeleton-circle animate-pulse w-[35px] h-[35px]"></span>
+                                                                </div>
+                                                                <div class="flex flex-col gap-4 w-full">
+                                                                    <span class="skeleton skeleton-block animate-pulse w-[60%] h-[10px]"></span>
+                                                                </div>
+                                                            </div>
+                                                        </li>
+                                                    </ul>
+                                                </div></div></div></div>
+                                </div>
+                                <div class="col-span-2 flex flex-col justify-center items-center bg-white dark:bg-gray-800">
+                                    <div class="xl:min-w-[450px] px-8">
+                                        <div class="mb-8">
+                                            <h3 class="mb-1">STEP2: Review Checklist (part2)</h3>
+                                            <p>Please answer the questions below </p>
+                                        </div>
+                                        <div>
+                                            <form  action="{{ url_for('goingconcern.goingconcerncontrolsapp3') }}" method="post">
+                                                <div class="form-container vertical">
+                                                    <!--Q5-->
+                                                    <div class="form-item vertical">
+                                                        <label class="form-label mb-2">Phasing of figures </label>
+                                                        <p>Are assumptions/workings used for the phasing of all figures correct? 
+                                                            Sales, Profit, Interest, Tax, Operating Cashflow, Restructuring, Non 
+                                                            operational cashflows, Amort + Depreciation</p><br>
+                                                        <div>
+                                                            <div class="flex flex-col gap-4">
+                                                                <label class="radio-label inline-flex">
+                                                                    <input type="radio" id="yesRadio5" class="radio" name="groupVerticalRadioExample555" value="Yes" required>
+                                                                    <span>Yes</span>
+                                                                </label>
+                                                                <label class="radio-label inline-flex">
+                                                                    <input type="radio" id="noRadio5" class="radio" name="groupVerticalRadioExample555" value="No" required>
+                                                                    <span>No</span>
+                                                                </label>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-item vertical">
+                                                        <div>
+                                                            <input class="input" id="explanationInput5" style="display:none;" type="text" name="explanationInput5" autocomplete="off" placeholder="Please provide a Comment (Optional)" value="">
+                                                        </div>
+                                                    </div>
+                                                     <!--Q6-->
+                                                     <div class="form-item vertical">
+                                                        <label class="form-label mb-2">Validation of links within sheets, between tabs and to external 
+                                                            documents.</label>
+                                                        <p>Check that all internal/external links are accurate and are correct. Links 
+                                                            to other tabs are correct and make sense and are easy to follow. Links 
+                                                            to external documents are minimised and were appropriate tested for 
+                                                            accuracy.
+                                                            Sufficent backup/explanation provided for all links </p><br>
+                                                        <div>
+                                                            <div class="flex flex-col gap-4">
+                                                                <label class="radio-label inline-flex">
+                                                                    <input type="radio" id="yesRadio6" class="radio" name="groupVerticalRadioExample666" value="Yes" required>
+                                                                    <span>Yes</span>
+                                                                </label>
+                                                                <label class="radio-label inline-flex">
+                                                                    <input type="radio" id="noRadio6" class="radio" name="groupVerticalRadioExample666" value="No" required>
+                                                                    <span>No</span>
+                                                                </label>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-item vertical">
+                                                        <div>
+                                                            <input class="input" id="explanationInput6" style="display:none;" type="text" name="explanationInput6" autocomplete="off" placeholder="Please provide a Comment (Optional)" value="">
+                                                        </div>
+                                                    </div>
+                                                    <!--Q7-->
+                                                    <div class="form-item vertical">
+                                                        <label class="form-label mb-2">Excel Formula's/Workings </label>
+                                                        <p>Check general excel formulas on all tabs for accuracy. Do they make 
+                                                            sense, are they adding correctly, are all relevant data points being 
+                                                            included? Check for circular references. 
+                                                            </p><br>
+                                                        <div>
+                                                            <div class="flex flex-col gap-4">
+                                                                <label class="radio-label inline-flex">
+                                                                    <input type="radio" id="yesRadio7" class="radio" name="groupVerticalRadioExample777" value="Yes" required>
+                                                                    <span>Yes</span>
+                                                                </label>
+                                                                <label class="radio-label inline-flex">
+                                                                    <input type="radio" id="noRadio7" class="radio" name="groupVerticalRadioExample777" value="No" required>
+                                                                    <span>No</span>
+                                                                </label>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-item vertical">
+                                                        <div>
+                                                            <input class="input" id="explanationInput7" style="display:none;" type="text" name="explanationInput7" autocomplete="off" placeholder="Please provide a Comment (Optional)" value="">
+                                                        </div>
+                                                    </div>
+                                                    <!--Q8-->
+                                                    <div class="form-item vertical">
+                                                        <label class="form-label mb-2">Net Debt Calculations </label>
+                                                        <p>Are net debt calculations/formula's accurate. Do they correctly 
+                                                            calculate net debt? Are cash movement inputs being calculated 
+                                                            correctly? Are opening balances correctly linked to prior periods?
+                                                            </p><br>
+                                                        <div>
+                                                            <div class="flex flex-col gap-4">
+                                                                <label class="radio-label inline-flex">
+                                                                    <input type="radio" id="yesRadio8" class="radio" name="groupVerticalRadioExample888" value="Yes" required>
+                                                                    <span>Yes</span>
+                                                                </label>
+                                                                <label class="radio-label inline-flex">
+                                                                    <input type="radio" id="noRadio8" class="radio" name="groupVerticalRadioExample888" value="No" required>
+                                                                    <span>No</span>
+                                                                </label>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-item vertical">
+                                                        <div>
+                                                            <input class="input" id="explanationInput8" style="display:none;" type="text" name="explanationInput8" autocomplete="off" placeholder="Please provide a Comment (Optional)" value="">
+                                                        </div>
+                                                    </div>
+                                                    
+                                                    <button class="btn btn-solid w-full" type="submit">Next</button>
+                                                </div>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </main>
+                </div>                              
+			</div>
+		</div>
+        <!--js5-->
+        <script>
+            document.addEventListener('DOMContentLoaded', function () {
+             var yesRadio = document.getElementById('yesRadio5');
+             var noRadio = document.getElementById('noRadio5');
+             var explanationInput = document.getElementById('explanationInput5');
+ 
+             function toggleInput() {
+                 if (yesRadio.checked || noRadio.checked) {
+                     explanationInput.style.display = 'block';
+                 } else {
+                     explanationInput.style.display = 'none';
+                 }
+             }
+ 
+             yesRadio.addEventListener('change', toggleInput);
+             noRadio.addEventListener('change', toggleInput);
+         });
+ 
+         </script>
+         <!--js6-->
+         <script>
+             document.addEventListener('DOMContentLoaded', function () {
+              var yesRadio = document.getElementById('yesRadio6');
+              var noRadio = document.getElementById('noRadio6');
+              var explanationInput = document.getElementById('explanationInput6');
+  
+              function toggleInput() {
+                  if (yesRadio.checked || noRadio.checked) {
+                      explanationInput.style.display = 'block';
+                  } else {
+                      explanationInput.style.display = 'none';
+                  }
+              }
+  
+              yesRadio.addEventListener('change', toggleInput);
+              noRadio.addEventListener('change', toggleInput);
+          });
+  
+          </script>
+           <!--js7-->
+         <script>
+             document.addEventListener('DOMContentLoaded', function () {
+              var yesRadio = document.getElementById('yesRadio7');
+              var noRadio = document.getElementById('noRadio7');
+              var explanationInput = document.getElementById('explanationInput7');
+  
+              function toggleInput() {
+                  if (yesRadio.checked || noRadio.checked) {
+                      explanationInput.style.display = 'block';
+                  } else {
+                      explanationInput.style.display = 'none';
+                  }
+              }
+  
+              yesRadio.addEventListener('change', toggleInput);
+              noRadio.addEventListener('change', toggleInput);
+          });
+  
+          </script>
+           <!--js8-->
+         <script>
+             document.addEventListener('DOMContentLoaded', function () {
+              var yesRadio = document.getElementById('yesRadio8');
+              var noRadio = document.getElementById('noRadio8');
+              var explanationInput = document.getElementById('explanationInput8');
+  
+              function toggleInput() {
+                  if (yesRadio.checked || noRadio.checked) {
+                      explanationInput.style.display = 'block';
+                  } else {
+                      explanationInput.style.display = 'none';
+                  }
+              }
+  
+              yesRadio.addEventListener('change', toggleInput);
+              noRadio.addEventListener('change', toggleInput);
+          });
+  
+          </script>
+		<!-- Core Vendors JS -->
+        
+		<script src="{{ url_for('static', filename='js/vendors.min.js') }}"></script>
+
+		<!-- Core JS -->
+		<script src="{{ url_for('static', filename='js/app.min.js') }}"></script>
+	</body>
+
+</html>
