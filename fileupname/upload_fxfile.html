@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>STT- Upload Singlefile</title>
+
+    <!-- ==== STYLE.CSS ==== -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+
+    <!-- ====  REMIXICON CDN ==== -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css"
+      rel="stylesheet"
+    />
+
+    <!-- ==== ANIMATE ON SCROLL CSS CDN  ==== -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
+  </head>
+  <body>
+    <!-- ==== HEADER ==== -->
+    <header class="container header">
+      <!-- ==== NAVBAR ==== -->
+      <nav class="nav">
+        <div class="logo">
+          <img src="https://upload.wikimedia.org/wikipedia/en/3/35/Pearson_logo.svg" style="width: 100px;"/>
+        </div>
+
+        <div class="nav_menu" id="nav_menu">
+  
+            <ul class="nav_menu_list">
+              <li class="nav_menu_item">
+                <a href="{{ url_for('home') }}" class="nav_menu_link">Home</a>
+              </li>
+            </ul>
+          </div>
+
+       
+      </nav>
+    </header>
+
+    <section class="wrapper">
+     <div class="container">
+        <div class="formbold-main-wrapper">
+            <!-- Author: FormBold Team -->
+            <!-- Learn More: https://formbold.com -->
+            <div class="formbold-form-wrapper">
+              <form action="/app5/upload_fxfile" method="post" enctype="multipart/form-data">
+                <div class="formbold-mb-5">
+                  <label for="email" class="formbold-form-label">
+                    Please Upload <a style='font-weight: bold; font-size: 20px;'> FX Rate csv file</a> and make sure the file is in the format of .csv and also that the right columns are in the csv file you are about to upload.
+                  </label>
+                <img src="{{ url_for('static', filename='fxfile.png') }}"  style="width: 100%;" />
+                </div>
+          
+                <div class="mb-6 pt-4">
+                  <label class="formbold-form-label formbold-form-label-2">
+                    Upload File
+                  </label>
+          
+                  <div class="formbold-mb-5 formbold-file-input">
+                    <input type="file" name="file" id="file" required/>
+                    <label for="file">
+                      <div>
+                        <span class="formbold-drop-file"> Drop files here </span>
+                        <span class="formbold-or"> Or </span>
+                        <span class="formbold-browse"> Browse </span>
+                      </div>
+                    </label>
+                  </div>
+          
+                 
+          
+                <div>
+                  <span id="file-name" class="file-name">File Name: "No file chosen"</span>
+                    <br>
+                  <button type="submit" value="Upload" class="formbold-btn w-full">Upload</button>
+                </div>
+              </form>
+            </div>
+          </div>
+</div>
+    </section>
+     <script>
+        document.getElementById('file').addEventListener('change', function() {
+  const fileName = this.files[0] ? this.files[0].name : "No file chosen";
+  document.getElementById('file-name').textContent = fileName;
+});
+
+    </script>
+
+    <footer></footer>
+
+    <!-- ==== ANIMATE ON SCROLL JS CDN -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <!-- ==== GSAP CDN ==== -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.8.0/gsap.min.js"></script>
+    <!-- ==== SCRIPT.JS ==== -->
+    
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+
+  </body>
+</html>
+

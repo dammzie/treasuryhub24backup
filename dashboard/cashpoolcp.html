@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Pearson Group Chart</title>
+
+    <!-- ==== STYLE.CSS ==== -->
+    
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}"/>
+
+    <!-- ====  REMIXICON CDN ==== -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css"
+      rel="stylesheet"
+    />
+
+    <!-- ==== ANIMATE ON SCROLL CSS CDN  ==== -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
+  </head>
+  <body>
+    <!-- ==== HEADER ==== -->
+    <header class="container header">
+      <!-- ==== NAVBAR ==== -->
+      <nav class="nav">
+        <div class="logo">
+          <img src="https://upload.wikimedia.org/wikipedia/en/3/35/Pearson_logo.svg" style="width: 100px;"/>
+        </div>
+        <div class="nav_menu" id="nav_menu">
+          <button class="close_btn" id="close_btn">
+            <i class="ri-close-fill"></i>
+          </button>
+
+          <ul class="nav_menu_list">
+            <li class="nav_menu_item">
+              <a href="{{ url_for('home') }}" class="nav_menu_link">Home</a>
+            </li>
+          </ul>
+        </div>
+
+        <button class="toggle_btn" id="toggle_btn">
+          <i class="ri-menu-line"></i>
+        </button>
+      </nav>
+    </header>
+
+<script src="https://d3js.org/d3.v7.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/d3-org-chart@3.0.1"></script>
+<script src="https://cdn.jsdelivr.net/npm/d3-flextree@2.1.2/build/d3-flextree.js"></script>
+
+<script type='text/javascript' src='https://tableau.pearson.com/javascripts/api/viz_v1.js'></script><div class='tableauPlaceholder' style='width: 1510px; height: 827px;'><object class='tableauViz' width='1510' height='827' style='display:none;'><param name='host_url' value='https%3A%2F%2Ftableau.pearson.com%2F' /> <param name='embed_code_version' value='3' /> <param name='site_root' value='' /><param name='name' value='CASHPOOL_oct3&#47;treasury' /><param name='tabs' value='no' /><param name='toolbar' value='yes' /><param name='showAppBanner' value='false' /></object></div>
+<!-- ==== ANIMATE ON SCROLL JS CDN -->
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<!-- ==== GSAP CDN ==== -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.8.0/gsap.min.js"></script>
+<!-- ==== SCRIPT.JS ==== -->
+<script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>
