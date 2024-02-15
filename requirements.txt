@@ -1,0 +1,13 @@
+Flask==2.1.0
+pandas==1.3.3
+gunicorn==20.1.0
+openpyxl==3.0.7
+Flask-Session
+xlsxwriter
+reportlab==3.6.1
+Werkzeug==2.0.1
+wheel
+plotly==5.1.0
+matplotlib==3.4.3
+numpy==1.21.2
+fpdf

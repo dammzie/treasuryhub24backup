@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Select Conversion Type and Date</title>
+
+    <!-- ==== STYLE.CSS ==== -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+
+    <!-- ====  REMIXICON CDN ==== -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css"
+      rel="stylesheet"
+    />
+
+    <!-- ==== ANIMATE ON SCROLL CSS CDN  ==== -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
+  </head>
+  <body>
+    <!-- ==== HEADER ==== -->
+    <header class="container header">
+      <!-- ==== NAVBAR ==== -->
+      <nav class="nav">
+        <div class="logo">
+          <img src="https://upload.wikimedia.org/wikipedia/en/3/35/Pearson_logo.svg" style="width: 100px;"/>
+        </div>
+
+        <div class="nav_menu" id="nav_menu">
+  
+            <ul class="nav_menu_list">
+              <li class="nav_menu_item">
+                <a href="{{ url_for('home') }}" class="nav_menu_link">Home</a>
+              </li>
+            </ul>
+          </div>
+
+       
+      </nav>
+    </header>
+
+    <section class="wrapper">
+     <div class="container">
+        <div class="formbold-main-wrapper">
+            <!-- Author: FormBold Team -->
+            <!-- Learn More: https://formbold.com -->
+            <div class="formbold-form-wrapper">
+
+                <h1 style="text-align: center; margin-top: 10px;">Select Conversion Type and Date</h1>
+                <form action="/download" method="post" class="formzz">
+                    
+
+
+                    <label for="conversion_type">Select Conversion Type:</label><br><br>
+                    <div class="select">
+                    <select name="conversion_type">
+                        {% for ctype in conversion_types %}
+                        <option value="{{ ctype }}">{{ ctype }}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+                <br><br>
+                    <label for="date">Select Date (YYYYMMDD): For example 20230822</label>
+                    <div class="search_box">
+                        <div class="search_field">
+                    <input type="text" name="date" pattern="\d{8}" required class="input"><br><br>
+                </div>
+            </div>
+            
+            <button type="submit" value="Download Processed File" class="formbold-btn w-full">Download Processed File</button>
+                   
+                </form>
+            </div>
+          </div>
+</div>
+    </section>
+
+    <footer></footer>
+
+    <!-- ==== ANIMATE ON SCROLL JS CDN -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <!-- ==== GSAP CDN ==== -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.8.0/gsap.min.js"></script>
+    <!-- ==== SCRIPT.JS ==== -->
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+  </body>
+</html>

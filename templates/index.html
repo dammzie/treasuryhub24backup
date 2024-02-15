@@ -1,0 +1,426 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Pearson Treasury FX Converter for Cash Force</title>
+
+    <!-- ==== STYLE.CSS ==== -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+
+    <!-- ====  REMIXICON CDN ==== -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css"
+      rel="stylesheet"
+    />
+
+    <!-- ==== ANIMATE ON SCROLL CSS CDN  ==== -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
+  </head>
+  <body>
+    <!-- ==== HEADER ==== -->
+    <header class="container header">
+      <!-- ==== NAVBAR ==== -->
+      <nav class="nav">
+        <div class="logo">
+          <img src="https://upload.wikimedia.org/wikipedia/en/3/35/Pearson_logo.svg" style="width: 100px;"/>
+        </div>
+
+        <div class="nav_menu" id="nav_menu">
+          <button class="close_btn" id="close_btn">
+            <i class="ri-close-fill"></i>
+          </button>
+
+          <ul class="nav_menu_list">
+           
+          </ul>
+        </div>
+
+        <button class="toggle_btn" id="toggle_btn">
+          <i class="ri-menu-line"></i>
+        </button>
+      </nav>
+    </header>
+
+    <section class="wrapper">
+      <div class="container">
+        <div class="grid-cols-2">
+          <div class="grid-item-1">
+            <h1 class="main-heading">
+              Welcome to <span>Pearson</span>
+              <br />
+              Treasury Application Hub.
+            </h1>
+            <p class="info-text">
+              Please Select or Search an Application you wish to access below.
+            </p>
+            <div class="search-box">
+              <input type="text" id="searchBar" placeholder="Search an application...">
+              <i class="search-icon ri-search-line"></i> <!-- Replace with your search icon class or image -->
+            </div>
+
+          </div>
+          <div class="grid-item-2">
+            <div class="team_img_wrapper">
+              <img src="{{ url_for('static', filename='main landing.png') }}" alt="team-img" />
+            </div>
+          </div>
+        </div>
+      </div>
+   
+      <div class="container" data-aos="fade-up" data-aos-duration="1000">
+        <div class="grid-cols-3">
+          <div class="grid-col-item application-item">
+            <div class="icon">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"
+                />
+              </svg>
+            </div>
+            <div class="featured_info">
+              <span>FX File converter for CashForce </span>
+              <p>
+                This is an Fx file converter that generates FX file needed for Cashforce.
+              </p>
+              <br>
+              <a  href="{{ url_for('application1') }}">
+              <button class="btn view_more_btn">
+                Open App <i class="ri-arrow-right-line"></i>
+              </button>
+              </a>
+            </div>
+          </div>
+
+                                <div class="grid-col-item application-item">
+            <div class="icon">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"
+                />
+              </svg>
+            </div>
+            <div class="featured_info">
+              <span>Going Concern Model</span>
+              <p>
+                This is an application that shows Pearson's financial viability.
+              </p>
+              <br>
+               <a  href="{{ url_for('goingconcern.netdebt') }}">
+              <button class="btn view_more_btn">
+                Open App <i class="ri-arrow-right-line"></i>
+              </button>
+               </a>
+            </div>
+          </div>
+
+          <div class="grid-col-item application-item">
+            <div class="icon">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"
+                />
+              </svg>
+            </div>
+            <div class="featured_info">
+              <span>Treasury Document wizard</span>
+              <p>
+                This is an application that generates a Document/report for Audit.
+              </p>
+              <br>
+              <a  href="{{ url_for('documentwiz.dwizapplogin') }}">
+              <button class="btn view_more_btn">
+                Open App <i class="ri-arrow-right-line"></i>
+              </button>
+              </a>
+            </div>
+          </div>
+          
+          <div class="grid-col-item application-item">
+            <div class="icon">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"
+                />
+              </svg>
+            </div>
+            <div class="featured_info">
+              <span>NIH FX Collar (Option Buy/Sell) Report Generator</span>
+              <p>
+                This is an application that generates a PDF report based on the FX data uploaded
+              </p>
+              <br>
+              <a  href="{{ url_for('app2.application2') }}">
+              <button class="btn view_more_btn">
+                Open App <i class="ri-arrow-right-line"></i>
+              </button>
+              </a>
+            </div>
+          </div>
+
+            <div class="grid-col-item application-item">
+            <div class="icon">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"
+                />
+              </svg>
+            </div>
+            <div class="featured_info">
+              <span>NIH FX (Swap/Spot) Report Generator</span>
+              <p>
+                This is an application that generates a PDF report based on the FX data uploaded
+              </p>
+              <br>
+              <a  href="{{ url_for('app3.application3') }}">
+              <button class="btn view_more_btn">
+                Open App <i class="ri-arrow-right-line"></i>
+              </button>
+              </a>
+            </div>
+          </div>
+
+
+                      <div class="grid-col-item application-item">
+            <div class="icon">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"
+                />
+              </svg>
+            </div>
+            <div class="featured_info">
+              <span>Treasury Dashboards</span>
+              <p>
+                This Application displays all the dashboards within the treasury Department.
+              </p>
+              <br>
+               <a  href="{{ url_for('dashboard.dashboard') }}">
+              <button class="btn view_more_btn">
+                Open App <i class="ri-arrow-right-line"></i>
+              </button>
+               </a>
+            </div>
+          </div>
+          
+            <div class="grid-col-item application-item">
+            <div class="icon">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"
+                />
+              </svg>
+            </div>
+            <div class="featured_info">
+              <span>Pearson Group Structure Chart</span>
+              <p>
+                This is an application that shows all Pearson group structure charts.
+              </p>
+              <br>
+               <a  href="{{ url_for('app4.application4') }}">
+              <button class="btn view_more_btn">
+                Open App <i class="ri-arrow-right-line"></i>
+              </button>
+               </a>
+            </div>
+          </div>
+
+                      <div class="grid-col-item application-item">
+            <div class="icon">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"
+                />
+              </svg>
+            </div>
+            <div class="featured_info">
+              <span>Treasury CashPool Structure</span>
+              <p>
+                This is an application that shows all the cashpools structure.
+              </p>
+              <br>
+               <a  href="{{ url_for('app6.application6') }}">
+              <button class="btn view_more_btn">
+                Open App <i class="ri-arrow-right-line"></i>
+              </button>
+               </a>
+            </div>
+          </div>
+
+                    <div class="grid-col-item application-item">
+            <div class="icon">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"
+                />
+              </svg>
+            </div>
+            <div class="featured_info">
+              <span>STT File Converter</span>
+              <p>
+                This is an application used to generate data for STT.
+              </p>
+              <br>
+              <a  href="{{ url_for('app5.upload_singlefile') }}">
+              <button class="btn view_more_btn">
+                Open App <i class="ri-arrow-right-line"></i>
+              </button>
+              </a>
+            </div>
+          </div>
+
+          
+          <div class="grid-col-item application-item">
+            <div class="icon">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"
+                />
+              </svg>
+            </div>
+            <div class="featured_info">
+              <span>FX File converter for Refinitiv</span>
+              <p>
+                This is an application that shows the Fx rates daily from Refinitiv.
+              </p>
+              <br>
+              <button class="btn view_more_btn">
+                Open App <i class="ri-arrow-right-line"></i>
+              </button>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+     <script>
+      document.addEventListener("DOMContentLoaded", function() {
+        // Get the search bar and all application items
+        const searchBar = document.getElementById('searchBar');
+        const applications = document.querySelectorAll('.application-item');
+    
+        searchBar.addEventListener('input', function(e) {
+          const searchText = e.target.value.toLowerCase();
+    
+          // Filter applications based on the search text
+          applications.forEach(function(application) {
+            const title = application.querySelector('span').textContent.toLowerCase();
+            if (title.includes(searchText)) {
+              application.style.display = '';
+            } else {
+              application.style.display = 'none';
+            }
+          });
+    
+          // Optional: Display a 'not found' message if all applications are hidden
+          const visibleApplications = Array.from(applications).filter(function(application) {
+            return application.style.display !== 'none';
+          });
+    
+          if (visibleApplications.length === 0) {
+            if (!document.querySelector('.no-results')) { // To prevent multiple messages
+              const noResultsMsg = document.createElement('div');
+              noResultsMsg.classList.add('no-results');
+              noResultsMsg.textContent = 'No applications found. Search something else.';
+              document.querySelector('.grid-cols-3').appendChild(noResultsMsg);
+            }
+          } else {
+            const noResultsMsg = document.querySelector('.no-results');
+            if (noResultsMsg) {
+              noResultsMsg.remove();
+            }
+          }
+        });
+      });
+    </script>
+    <footer></footer>
+
+    <!-- ==== ANIMATE ON SCROLL JS CDN -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <!-- ==== GSAP CDN ==== -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.8.0/gsap.min.js"></script>
+    <!-- ==== SCRIPT.JS ==== -->
+    <script src="{{ url_for('static', filename='script.js') }}" defer></script>
+  </body>
+</html>
