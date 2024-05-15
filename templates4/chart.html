@@ -88,6 +88,7 @@
 <script src="https://cdn.jsdelivr.net/npm/d3-flextree@2.1.2/build/d3-flextree.js"></script>
 
 <div class="wrapperzz" style="background-color: transparent;">
+  <p style="font-size: 13px; font-weight: bold; color: #2596be;">&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp Last updated April 11, 2024</p>
   <div class="search_box box1">
     <div class="search_field box2">
       <input type="search" class="input" placeholder="search by name" oninput="filterChart(event)"/>
@@ -178,11 +179,12 @@ function selectNode(nodeId) {
   }
 }
 
+//https://raw.githubusercontent.com/dammzie/jistfile/main/MCAPRIL2024.csv
 
-
-  d3.csv('https://raw.githubusercontent.com/dammzie/jistfile/main/maindatachart.csv').then((data) => {
+  d3.csv('https://raw.githubusercontent.com/dammzie/jistfile/main/MCAPRIL2024LIS.csv').then((data) => {
+    
     chart = new d3.OrgChart()
-      .nodeHeight((d) => 85 + 25)
+      .nodeHeight((d) => 120 + 25)
       .nodeWidth((d) => 220 + 2)
       .childrenMargin((d) => 50)
       .compactMarginBetween((d) => 35)
@@ -198,31 +200,157 @@ function selectNode(nodeId) {
         const color = '#FFFFFF';
         const imageDiffVert = 25 + 2;
         return `
-                <div data-node-id="${d.data.id}" style='width:${
-                  d.width
-                }px;height:${d.height}px;padding-top:${imageDiffVert - 2}px;padding-left:1px;padding-right:1px'>
+                <div data-node-id="${d.data.id}" style='width:${d.width}px;height:${d.height}px;padding-top:${imageDiffVert - 2}px;padding-left:1px;padding-right:1px'>
+                  ${
+                      d.data['2ndPearsoncompanyhasNS'] === 'YES' ? `<i class="fa fa-arrow-turn-down" style="font-size: 15px; position: absolute; top: 5px; right: 5px; z-index: 1;"></i>` : ''
+                  } <!-- Conditionally display icon -->
                         <div style="font-family: 'Inter', sans-serif;background-color:${color};  margin-left:-1px;width:${d.width - 2}px;height:${d.height - imageDiffVert}px;border-radius:10px;border: ${d.data._highlighted || d.data._upToTheRootHighlighted ? '5px solid #E27396"' : '1px solid #E4E2E9"'} >
-                            <div style="display:flex;justify-content:flex-end;margin-top:5px;margin-right:8px">...</div>
+                            <div style="display:flex;justify-content:flex-end;margin-top:5px;margin-right:8px">
+                              <div class="triangle-container">
+                              ${
+                                  d.data.ownedbyPearson ? `
+                                  
+                                      <div class="triangle"></div>
+                                      <div class="triangle-text">${d.data.ownedbyPearson}</div>
+                                  
+                                  ` : ''
+                              }
+                            </div>
+                            </div>
                             <div style="background-color:${color};margin-top:${-imageDiffVert - 20}px;margin-left:${15}px;border-radius:100px;width:50px;height:50px;" ></div>
                             <div style="margin-top:${
                               -imageDiffVert - 20
-                            }px;">   <img src=" ${d.data.image}" style="margin-left:${20}px;border-radius:100px;width:40px;height:40px;" /></div>
-                            <div style="font-size:15px;color:#08011E;margin-left:20px;margin-top:10px">  ${
+                            }px;">   <img src=" ${d.data.CountryFlag}" style="margin-left:${20}px;border-radius:100px;width:40px;height:40px;" /></div>
+                            <div style="font-size:15px;color:#08011E;margin-left:20px;margin-top:10px;">  ${
                               d.data.name
                             } </div>
-
+                            <div style="color:#716E7B;margin-left:20px;margin-top:3px;font-size:10px;">
+                               ${d.data.PercentageSummary ? `${d.data.PercentageSummary}` : ''}
+                              </div>
                         </div>
-                    </div>
+                </div>
                             `;
       })
       .container('.chart-container')
       .data(data)
       .render();
+      updateLegend(data);
   });
+  function updateLegend(data) {
+  const countryCounts = d3.rollup(data, v => v.length, d => d.Country);
+
+  const countryStatsTable = document.getElementById('countryStats');
+  let htmlContent = '';
+  let colCount = 0;
+  let totalCompanies = 0;
+
+  countryCounts.forEach((count, country) => {
+    totalCompanies += count; 
+    if (colCount % 7 === 0) htmlContent += '<tr>'; // Start a new row every 7 columns
+    const flagUrl = data.find(d => d.Country === country)?.CountryFlag; // Find the flag URL for the country
+    htmlContent += `
+        <td>
+            <div style="display: flex; align-items: center; gap: 10px;">
+                <img src="${flagUrl}" alt="${country}" style="width: 30px; height: 30px;">
+                <div style="font-weight:bold;">
+                    <div>${country}</div>
+                    <div>${count} companies</div>
+                </div>
+            </div>
+        </td>
+    `;
+    colCount++;
+    if (colCount % 7 === 0) htmlContent += '</tr>'; // Close the row after 7 columns
+});
+
+  if (colCount % 7 !== 0) htmlContent += '</tr>'; // Close last row if it wasn't filled completely
+// After filling in the countries table, update the specific section for total companies
+document.querySelector('.triangle-text-TPC').textContent = `${totalCompanies}`;
+
+  countryStatsTable.innerHTML = htmlContent;
+}
 </script>
 
+<div id="legendCard" class="legend-card">
+  <div class="legend-content">
+      <h4>Legends</h4>
+      <br>
+      <table id="countryStats" class="country-stats">
+        <!-- Dynamic content will be inserted here -->
+    </table>
+    <br>
+    <table class="country-stats">
+      <td>
+        <div style="display: flex; align-items: center; gap: 10px;">
+          <i class="fa-solid fa-arrow-turn-down" style="font-size: 20px;"></i>
+            <div style="font-weight:bold;">
+                <div>2nd Pearson
+                  company has <br>
+                  nominee
+                  shareholding
+                  </div>
+            </div>
+        </div>
+    </td>
+    <td>
+      <div style="display: flex; align-items: center; gap: 10px;">
+        <div class="triangle-container">
+          <div class="triangle"></div>
+          <div class="triangle-text">X%</div>
+      </div>
+          <div style="font-weight:bold;">
+              <div>% owned by
+                Pearson <br>
+                (all
+                others 100%)                
+                </div>
+          </div>
+      </div>
+  </td>
+  <td>
+    <div style="display: flex; align-items: center; gap: 10px;">
+      <div>
+        
+        <div class="triangle-text-TPC" style="font-weight: bold; font-size: 30px;"></div>
+    </div>
+        <div style="font-weight:bold;">
+            <div>Total Pearson 
+              <br>Companies               
+              </div>
+        </div>
+        <div><i class="fa-regular fa-building" style="font-size: 30px;"></i></div>
+    </div>
+</td>
+  </table>
+  <br>
+  </div>
+  <button id="toggleLegend" class="toggle-legend" style="color: #2596be; font-weight: bold;">
+    <i class="fas fa-angle-double-up"></i>&nbsp Legends
+  </button>
+</div>
+<script>
+  document.getElementById('toggleLegend').addEventListener('click', function() {
+    var legendCard = document.getElementById('legendCard');
+    var legendContent = legendCard.querySelector('.legend-content');
+    var icon = this.querySelector('i');
 
-<script src="./pieChart.js"></script>
+    // Toggle the display of the legend content and change the icon
+    if (legendContent.style.display === 'none' || legendContent.style.display === '') {
+        legendContent.style.display = 'block';
+        icon.classList.remove('fa-angle-double-up');
+        icon.classList.add('fa-angle-double-down');
+    } else {
+        legendContent.style.display = 'none';
+        icon.classList.remove('fa-angle-double-down');
+        icon.classList.add('fa-angle-double-up');
+    }
+
+    // Optionally, animate the card height or position
+    legendCard.classList.toggle('collapsed');
+});
+
+</script>
+<!--<script src="./pieChart.js"></script>-->
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link
@@ -243,6 +371,80 @@ function selectNode(nodeId) {
 </script>
 
 <style>
+   .triangle-container {
+            position: relative;
+            width: 30px;
+            height: 30px;
+        }
+
+        .triangle {
+            width: 0;
+            height: 0;
+            border-left: 15px solid transparent;
+            border-right: 15px solid transparent;
+            border-bottom: 30px solid orange;
+            position: absolute;
+            top: 0;
+            left: 0;
+        }
+
+        .triangle-text {
+            position: absolute;
+            top: 70%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            color: rgb(0, 0, 0);
+            font-weight: bold;
+            font-size: 6px;
+        }
+  .country-stats {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.country-stats td {
+    text-align: left; /* Aligns content to the left of the cell */
+    vertical-align: middle; /* Aligns content vertically in the middle */
+    padding: 5px;
+    font-size: 12px;
+}
+
+  .legend-card {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    background-color: white;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 10px;
+    width: auto;
+    max-width: 100%;
+    transition: bottom 0.3s ease;
+    z-index: 1000; /* Make sure the div appears above other content */
+}
+
+.legend-content {
+    display: none; /* Hide the content by default */
+}
+
+.toggle-legend {
+    background: none;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 16px;
+}
+
+.legend-card.collapsed .legend-content {
+    display: block;
+}
+
+.legend-card.collapsed .toggle-legend i {
+    transform: rotate(180deg);
+}
+
   .btn {
     margin: 3px;
     color: inherit;
