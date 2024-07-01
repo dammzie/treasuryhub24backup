@@ -44,7 +44,7 @@ def app3success():
         
         # Filter based on user-selected date range and transaction types
         filtered_date_data = uploaded_df[(uploaded_df['TradeDate'] >= start_date_object) & (uploaded_df['TradeDate'] <= end_date_object)]
-        filtered_data = filtered_date_data[filtered_date_data['Reason'].isin(['FX Swap NIH', 'FX Spot NIH'])]
+        filtered_data = filtered_date_data[filtered_date_data['Reason'].isin(['FX Swap NIH', 'FX Spot NIH', 'FX Forward NIH'])]
         
         # Generate PDF
         report_content = []
