@@ -76,7 +76,7 @@ def app3success():
             trade_date = row['TradeDate'].strftime("%dth of %b. %Y")
 
             # Logic to determine start and maturity dates based on transaction type
-            if trans_type in ["FX Spot NIH", "FX Forwards NIH"]:
+            if trans_type in ["FX Spot NIH", "FX Forward NIH"]:
                 start_date = trade_date
                 maturity_date = original_start_date
             else:  # Assuming "FX Swap NIH" as the default
